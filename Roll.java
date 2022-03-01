@@ -15,10 +15,6 @@ public class Roll
     {
 
     }
-    private void quater()
-    {
-
-    }
 
 
 
