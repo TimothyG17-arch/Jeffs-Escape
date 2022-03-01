@@ -3,9 +3,8 @@ public class Item
 
     private Item()
     {
-        String name =  " ";
-        String description = " ";
-        int weapondmg = 0 ;
+        String name =  " "; // Shows the name of the item
+        String description = " "; // Gives a brief rundown of what the item is
     }
 
 }
