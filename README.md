@@ -1,6 +1,6 @@
 # Jeffs-Escape
 
-Group Names - David, Gabriel, Noah, Logan Rogers, Timothy 
+Group Names - David, Gabriel, Noah, President Logan Rogers, Timothy 
 
 JOHN, by the grace of God King of England, Lord of Ireland, Duke of Normandy and Aquitaine, and Count of Anjou, to his archbishops, bishops, abbots, earls, barons, justices, foresters, sheriffs, stewards, servants, and to all his officials and loyal subjects, Greeting.
 
