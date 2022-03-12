@@ -1,16 +1,26 @@
-public abstract class Enemies
+public abstract class Enemies extends Entity
 {
-    private Enemies()
-    {
-        String name = ""; // Gives name of enemy
-        String description = ""; // Gives description of said enemy
-    }
-    private void damage() // Sets the damage for the enemies we face in the game
-    {
+    int damage;
+    int hp;
 
-    }
-    private void Hp() // Sets the amount of health for the enemies we face in the game
+    public Enemies(int hp, int damage) // Sets up the super for HP and damage
     {
-
+        super(hp, damage);
+    }
+    public int getHp() // Gets hp for the enemies
+    {
+        return hp;
+    }
+    public void setHp(int hp) // Sets HP for a enemy
+    {
+        this.hp = hp;
+    }
+    public int getDamage() // Receives damage input for an enemy
+    {
+        return damage;
+    }
+    public void setDamage(int damage) // Sets damage for the enemy
+    {
+        this.damage = damage;
     }
 }

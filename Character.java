@@ -1,10 +1,28 @@
-public class Character
+public class Character extends Entity
 {
-    private Character()
-    {
-        String name = "";
-        int damage = 0; // This value can be changed by items adding to the total, the number placed here will be the baseline starting point basically
-        int Hp = 0; // This value is supposed to stay constant after combat ends, so we go into the fights with full health
-    }
+    private int damage;
+    private int hp; // This value is intended to stay constant. Idea is to heal to full after combat is over.
 
+    public Character() // Character constructor
+    {
+        super(200, 20);
+        this.hp = 200;
+        this.damage = 20;
+    }
+    public int getDamage() // Gets the damage that character is able to deal
+    {
+        return damage;
+    }
+    public void setDamage(int damage) // Sets the Character's default damage
+    {
+        this.damage = damage;
+    }
+    public int getHp() // Gets the HP for character
+    {
+        return hp;
+    }
+    public void setHp(int hp) // Sets the Character's default HP
+    {
+        this.hp = hp;
+    }
 }
