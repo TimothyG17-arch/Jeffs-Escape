@@ -1,11 +1,27 @@
+import java.util.HashMap;
+
 public class Locations
 {
-    private Locations()
-    {
-        String area = "";//areas in hashmap
 
+    HashMap<String, Area> map = new HashMap<String, Area>();
 
+    public void addArea(String name, Area area){
+        map.put(name, area);
     }
+    public void getArea(String name){
+        System.out.println(map.get(name));
+    }
+
+    public void getAllRooms(){
+        for (String i : map.keySet()) {
+            System.out.println(i);
+        }
+    }
+
+    public Locations() {
+        this.map = map;
+    }
+
     private void itemLook(){
         //will search room and look for items in the current room
     }
