@@ -7,6 +7,21 @@ public class Driver {
 
         Locations locations = new Locations();
 
+        Item diningkeycard = new Item ("Dining Hall Keycard", "This lets you into the dining hall. Vegan options included.");
+
+        Weapon cellkeycard = new Weapon("Cell Keycard", "It's a little bit sharp. Not really though. Good luck.");
+        cellkeycard.setDamage(5); //obtained as starting weapon
+        Weapon spork = new Weapon("Spork", "Arguably worse than your fists in combat but now you can eat salad and still look civilized.");
+        spork.setDamage(10); //obtained from winning a fight in any of the blocks
+        Weapon shampoobottle = new Weapon("Shampoo Bottle", "Who filled this with hydrochloric acid? No idea but it's useful");
+        shampoobottle.setDamage(15); //obtained on entering showers and before your fight in the showers
+        Weapon hardenedsteak = new Weapon("Hardened Steak", "Ready to meat your opponents");
+        hardenedsteak.setDamage(15); //obtained from winning a fight in the dining hall
+        Weapon gun = new Weapon("Gun", "Jesus Christ, what have you come to Jeff? A lethal weapon? What are you doing man, what are you doing?");
+        gun.setDamage(999); //obtained from winning a fight in the guard office
+        Weapon bowlinball = new Weapon("Bowlin Ball", "Hauntingly handsome, perhaps it resembles it's previous owner?");
+        bowlinball.setDamage(500); //obtained before your fight with Mr. Bowlin
+
         Area centerblock = new Area("Center Block");
         centerblock.areas.add("North Block");
         centerblock.areas.add("South Block");
@@ -71,7 +86,12 @@ public class Driver {
 
         dialogue.directionDialogue(direction1);
 
-        //dialogue.cmbDialogue("Prisoner #468", "Hey! You! Let me out!", "THIS DIALOGUE LINE IS TESTING");
+        System.out.println(direction1);
+
+        dialogue.cmbDialogue("Prisoner #468", "Hey! You! Let me out!", "THIS DIALOGUE LINE IS TESTING");
+
+        System.out.println(cellkeycard.getDamage());
+        System.out.println(cellkeycard.getDescription());
 
     }
 }

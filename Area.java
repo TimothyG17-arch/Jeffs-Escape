@@ -17,7 +17,6 @@ public class Area {
 
     public Area(String name) {
         this.name = name;
-        this.areas = areas;
     }
 
     @Override

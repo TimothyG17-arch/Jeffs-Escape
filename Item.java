@@ -2,13 +2,11 @@ public class Item
 {
     protected String name;
     protected String description;
-    protected int stats;
 
-    public Item(String name, String description, int stats)
+    public Item(String name, String description)
     {
         this.name = name;
         this.description = description;
-        this.stats = stats;
     }
 
     // Getters and Setters for name, description, and stats
@@ -28,23 +26,8 @@ public class Item
         this.description = description;
     }
 
-    public int getStats() {
-        return stats;
-    }
-
-    public void setStats(int stats) {
-        this.stats = stats;
-    }
-
-    // toString method to print out name and description
-    public String toString()
-    {
-        String displayString = "";
-
-        displayString += "\nItem Name: " + name + "\n";
-        displayString += "Description: " + description + "\n";
-        displayString += "Stats: " + stats;
-
-        return displayString;
+    @Override
+    public String toString() {
+        return  name + description;
     }
 }
