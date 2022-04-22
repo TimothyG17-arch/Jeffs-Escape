@@ -31,23 +31,30 @@ public class Driver {
 
         Area northblock = new Area("North Block");
         northblock.areas.add("Center Block");
+        northblock.areas.add("The Bowlin Arena");
+        northblock.areas.add("Dining Hall");
         locations.addArea("North Block", northblock);
 
         Area southblock = new Area("South Block");
         southblock.areas.add("Center Block");
+        southblock.areas.add("Gourd Office");
+        southblock.areas.add("Showers");
         locations.addArea("South Block", southblock);
 
         Area westblock = new Area("West Block");
         westblock.areas.add("Center Block");
+        westblock.areas.add("Gourd Office");
         locations.addArea("West Block", westblock);
 
         Area eastblock = new Area("East Block");
         eastblock.areas.add("Center Block");
+        eastblock.areas.add("Dining Hall");
+        eastblock.areas.add("Showers");
         locations.addArea("East Block", eastblock);
 
         Area showers = new Area("Showers");
-        eastblock.areas.add("East Block");
-        eastblock.areas.add("South Block");
+        showers.areas.add("East Block");
+        showers.areas.add("South Block");
         locations.addArea("Showers", showers);
 
         Area dininghall = new Area("Dining Hall");
@@ -64,14 +71,14 @@ public class Driver {
         bowlinarena.areas.add("North Block");
         locations.addArea("The Bowlin Arena", bowlinarena);
 
-        Area guardoffice = new Area("Guard Office");
-        guardoffice.areas.add("South Block");
-        guardoffice.areas.add("West Block");
-        guardoffice.areas.add("Warden Hall");
-        locations.addArea("Guard Office", guardoffice);
+        Area gourdoffice = new Area("Gourd Office");
+        gourdoffice.areas.add("South Block");
+        gourdoffice.areas.add("West Block");
+        gourdoffice.areas.add("Warden Hall");
+        locations.addArea("Gourd Office", gourdoffice);
 
         Area wardenhall = new Area("Warden Hall");
-        wardenhall.areas.add("Guard Office");
+        wardenhall.areas.add("Gourd Office");
         locations.addArea("Warden Hall", wardenhall);
 
         Dialogue dialogue = new Dialogue();
@@ -82,16 +89,46 @@ public class Driver {
 
         System.out.println(centerblock);
 
-        String direction1 = scanner.nextLine();
 
-        dialogue.directionDialogue(direction1);
+        String direction = scanner.nextLine();
 
-        System.out.println(direction1);
+        dialogue.directionDialogue(direction);
 
-        dialogue.cmbDialogue("Prisoner #468", "Hey! You! Let me out!", "THIS DIALOGUE LINE IS TESTING");
+        while(true) {
 
-        System.out.println(cellkeycard.getDamage());
-        System.out.println(cellkeycard.getDescription());
+            if (direction.equalsIgnoreCase("center block")) {
+                System.out.println(centerblock);
+            } else if (direction.equalsIgnoreCase("north block")) {
+                System.out.println(northblock);
+            } else if (direction.equalsIgnoreCase("south block")) {
+                System.out.println(southblock);
+            } else if (direction.equalsIgnoreCase("west block")) {
+                System.out.println(westblock);
+            } else if (direction.equalsIgnoreCase("east block")) {
+                System.out.println(eastblock);
+            } else if (direction.equalsIgnoreCase("showers")) {
+                System.out.println(showers);
+            } else if (direction.equalsIgnoreCase("dining hall")) {
+                System.out.println(dininghall);
+            } else if (direction.equalsIgnoreCase("kitchen")) {
+                System.out.println(kitchen);
+            } else if (direction.equalsIgnoreCase("the bowlin arena")) {
+                System.out.println(bowlinarena);
+            } else if (direction.equalsIgnoreCase("gourd office")) {
+                System.out.println(gourdoffice);
+            } else if (direction.equalsIgnoreCase("warden hall")) {
+                System.out.println(wardenhall);
+            }
+
+            direction = scanner.nextLine();
+
+            dialogue.directionDialogue(direction);
+        }
+
+        //dialogue.cmbDialogue("Prisoner #468", "Hey! You! Let me out!", "THIS DIALOGUE LINE IS TESTING");
+
+        //System.out.println(cellkeycard.getDamage());
+        //System.out.println(cellkeycard.getDescription());
 
     }
 }

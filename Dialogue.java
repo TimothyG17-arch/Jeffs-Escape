@@ -22,12 +22,12 @@ public class Dialogue
             "inserteventhere"
     };
 
-    // USAGE: In driver call dialogue.cmbDialogue("Tony", "Maidenless?", "Yeah");
+    // USAGE: In driver call dialogue.cmbDialogue("Tony", "Wanna fight?", "Yeah");
     public void cmbDialogue(String enemyName, String enemyDialogue, String jeffDialogue){
         System.out.println(ANSI_RED + enemyName + ANSI_RESET + ": " + enemyDialogue);
         System.out.println(ANSI_GREEN + "Jeff" + ANSI_RESET + ": " + jeffDialogue);
     }
     public void directionDialogue(String direction){
-        System.out.println("\nYou've decided to go to the " + ANSI_YELLOW + direction);
+        System.out.println("\nYou've decided to go to the " + ANSI_YELLOW + direction + ANSI_RESET + "\n");
     }
 }
