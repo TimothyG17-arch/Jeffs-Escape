@@ -1,16 +1,27 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Combat
 {
-        public int playerHp;
-        public int enemyHp;
-        public int playDmg;
-        public int enemyDmg;
-        public String playerText;
-        public int checkP;
-        public boolean looping;
+
+    final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_BLACK = "\u001B[30m";
+    final String ANSI_RED = "\u001B[31m";
+    final String ANSI_GREEN = "\u001B[32m";
+    final String ANSI_YELLOW = "\u001B[33m";
+    final String ANSI_BLUE = "\u001B[34m";
+    final String ANSI_PURPLE = "\u001B[35m";
+    final String ANSI_CYAN = "\u001B[36m";
+    final String ANSI_WHITE = "\u001B[37m";
+
+    public int playerHp;
+    public int enemyHp;
+    public int playDmg;
+    public int enemyDmg;
+    public String playerText;
+    public int checkP;
+    public boolean looping;
+
     public Combat() {
         playerHp = 0;
         enemyHp = 0;
@@ -19,8 +30,6 @@ public class Combat
         playerText = "";
         checkP = 0;
     }
-
-
     public void enterCombat(Character cha, Enemies mo) {
         playerHp = cha.getHp();
         enemyHp = mo.getHp();
@@ -28,23 +37,22 @@ public class Combat
         enemyDmg =mo.getDamage();
         while (!looping) {
             if (checkP == 0) {
-                System.out.println("\n Current Player HP " + playerHp + ". Enemy is a chonky " + enemyHp + " HP well shit.\n");
-                System.out.println("This guy built diff on god\nToo bad god hall says you have to fight");
-                System.out.println("Type gluten to attack or quit to end game");
+                System.out.println("\nPlayer's HP: " + playerHp + ". Opponent's HP: " + enemyHp + "\n");
+                System.out.println("Type " + ANSI_PURPLE + "A" + ANSI_RESET + " to attack");
                 playerText = k.nextLine().toLowerCase();
 
-                if(playerText.equals("gluten"))
+                if(playerText.equalsIgnoreCase("A"))
                 {
                     int hit = enemyHp;
                     attack();
-                    System.out.println("Hit for " + (hit - enemyHp));
+                    System.out.println("\nHit for " + (hit - enemyHp));
                 }
-                else if(playerText.equals("instakill"))
+                else if(playerText.equalsIgnoreCase("instakill"))
                 {
                     instakill();
                 }
                 else{
-                    System.out.println("HIT HIMMMMMM");
+                    System.out.println("That's not a very valid action!");
                 }
             } else
             {
@@ -55,7 +63,6 @@ public class Combat
         }
 
     }
-
     private void attack() {
         Roll dice = new Roll();
         if (checkP == 0) {
@@ -67,16 +74,13 @@ public class Combat
         }
 
     }
-
     public boolean die() {
         if (enemyHp <= 0) {
             checkP = 0;
             return true;
         } else if (playerHp <= 0) {
-            System.out.println("\n You got shit on RIP ig *insert wilhiem scream*");
+            System.out.println("\nDieded");
             System.exit(0);
-        } else {
-            System.out.println(" HIT HIM AGAIN, I SAID HIT HIM AGAIN");
         }
         return false;
     }

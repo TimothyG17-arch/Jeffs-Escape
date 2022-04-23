@@ -9,7 +9,9 @@ public class Character extends Entity
         this.hp = 200;
         this.damage = 20;
     }
+
     public static Character player = new Character();
+
     public int getDamage() // Gets the damage that character is able to deal
     {
         return damage;

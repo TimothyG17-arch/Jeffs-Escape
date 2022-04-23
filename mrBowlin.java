@@ -1,6 +1,5 @@
 public class mrBowlin extends Enemies
 {
-
     public mrBowlin() {
         super(500, 50);
         this.hp = 500;

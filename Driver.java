@@ -1,28 +1,39 @@
-import java.util.ArrayList;
 import java.util.Scanner;
+
 public class Driver {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        Combat combat = new Combat();
-        Locations locations = new Locations();
-        Character cha = new Character();
+        final String ANSI_RESET = "\u001B[0m";
+        final String ANSI_BLACK = "\u001B[30m";
+        final String ANSI_RED = "\u001B[31m";
+        final String ANSI_GREEN = "\u001B[32m";
+        final String ANSI_YELLOW = "\u001B[33m";
+        final String ANSI_BLUE = "\u001B[34m";
+        final String ANSI_PURPLE = "\u001B[35m";
+        final String ANSI_CYAN = "\u001B[36m";
+        final String ANSI_WHITE = "\u001B[37m";
 
-        TheWarden ward = new TheWarden();
-        mrBowlin bowl = new mrBowlin();
+        Scanner scanner = new Scanner(System.in);
+
+        Locations locations = new Locations();
+
+        TheWarden warden = new TheWarden();
+        mrBowlin bowlin = new mrBowlin();
         Guards guard = new Guards();
         Chefs chef = new Chefs();
-        Prisoner prison = new Prisoner();
-        NakedCowboys nakedCowboys = new NakedCowboys();
+        Prisoner prisoner = new Prisoner();
+        NakedCowboys nakedcowboy = new NakedCowboys();
 
-        Item diningkeycard = new Item("Dining Hall Keycard", "This lets you into the dining hall. Vegan options included.");
-        combat.addEnemies(bowl);
-        combat.addEnemies(ward);
-        combat.addEnemies(guard);
-        combat.addEnemies(prison);
-        combat.addEnemies(chef);
-        combat.addEnemies(nakedCowboys);
+        Combat combat = new Combat();
 
+        combat.addEnemies(prisoner);        // 0
+        combat.addEnemies(guard);           // 1
+        combat.addEnemies(chef);            // 2
+        combat.addEnemies(nakedcowboy);     // 3
+        combat.addEnemies(warden);          // 4
+        combat.addEnemies(bowlin);          // 5
+
+        Item diningkeycard = new Item ("Dining Hall Keycard", "This lets you into the dining hall. Vegan options included.");
 
         Weapon cellkeycard = new Weapon("Cell Keycard", "It's a little bit sharp. Not really though. Good luck.");
         cellkeycard.setDamage(5); //obtained as starting weapon
@@ -33,7 +44,7 @@ public class Driver {
         Weapon hardenedsteak = new Weapon("Hardened Steak", "Ready to meat your opponents");
         hardenedsteak.setDamage(15); //obtained from winning a fight in the dining hall
         Weapon gun = new Weapon("Gun", "Jesus Christ, what have you come to Jeff? A lethal weapon? What are you doing man, what are you doing?");
-        gun.setDamage(999); //obtained from winning a fight in the guard office
+        gun.setDamage(999); //obtained from winning a fight in the gourd office
         Weapon bowlinball = new Weapon("Bowlin Ball", "Hauntingly handsome, perhaps it resembles it's previous owner?");
         bowlinball.setDamage(500); //obtained before your fight with Mr. Bowlin
 
@@ -108,38 +119,81 @@ public class Driver {
         String direction = scanner.nextLine();
 
         dialogue.directionDialogue(direction);
-        boolean bool = true;
-        while (bool) {
-            if (direction.equalsIgnoreCase("center block")) {
-                System.out.println("Center Block");
-                combat.enterCombat(Character.player, combat.enemies.get(3));
-            } else if (direction.equalsIgnoreCase("north block")) {
-                System.out.println(northblock);
-            } else if (direction.equalsIgnoreCase("south block")) {
-                System.out.println(southblock);
-            } else if (direction.equalsIgnoreCase("west block")) {
-                System.out.println(westblock);
-            } else if (direction.equalsIgnoreCase("east block")) {
-                System.out.println(eastblock);
-            } else if (direction.equalsIgnoreCase("showers")) {
-                System.out.println(showers);
-            } else if (direction.equalsIgnoreCase("dining hall")) {
-                System.out.println(dininghall);
-            } else if (direction.equalsIgnoreCase("kitchen")) {
-                System.out.println(kitchen);
-            } else if (direction.equalsIgnoreCase("the bowlin arena")) {
-                System.out.println(bowlinarena);
-            } else if (direction.equalsIgnoreCase("gourd office")) {
-                System.out.println(gourdoffice);
-            } else if (direction.equalsIgnoreCase("warden hall")) {
-                System.out.println(wardenhall);
-                bool = false;
-            }
-            direction = scanner.nextLine();
-            dialogue.directionDialogue(direction);
 
+        boolean bool = true;
+
+        while(bool) {
+
+            if (direction.equalsIgnoreCase("center block")) {
+                System.out.println(centerblock);
+
+            } else if (direction.equalsIgnoreCase("north block")) {
+                dialogue.cmbDialogue("Prisoner #468", "Hey! You! Let me out!", "No? Why lol? Sucks for you I guess.");
+                System.out.println("\n" + ANSI_RED + "Prisoner #468 " + ANSI_RESET + "becomes so angry he bends the cell bars with his mind and crawls out. Get ready.");
+                combat.enterCombat(Character.player, combat.enemies.get(0));
+                System.out.println("\nJeff stands victorious.\n");
+                System.out.println(northblock);
+
+            } else if (direction.equalsIgnoreCase("south block")) {
+                dialogue.cmbDialogue("Patrick Bateman", "Out of my way, I have to return some videotapes.", "I'll be taking those.");
+                combat.enterCombat(Character.player, combat.enemies.get(0));
+                System.out.println("\nJeff stands victorious.\n");
+                System.out.println(southblock);
+
+            } else if (direction.equalsIgnoreCase("west block")) {
+                dialogue.cmbDialogue("Ex", "Hey, I really miss you, I was thi-", "Seriously? How'd you get up here? Why? It's been seven year Melanie! Give me peace!");
+                combat.enterCombat(Character.player, combat.enemies.get(0));
+                System.out.println("\nJeff stands victorious.\n");
+                System.out.println(westblock);
+
+            } else if (direction.equalsIgnoreCase("east block")) {
+                dialogue.cmbDialogue("Space Crab", "*clickclick clackclick*", "I'm feeling a bit crabby today.");
+                combat.enterCombat(Character.player, combat.enemies.get(0));
+                System.out.println("\nJeff stands victorious.\n");
+                System.out.println(eastblock);
+
+            } else if (direction.equalsIgnoreCase("showers")) {
+                dialogue.cmbDialogue("Naked Cowboy", "Cowboys in the showers at Ram Ranch!", "Ram Ranch really rocks!");
+                combat.enterCombat(Character.player, combat.enemies.get(3));
+                System.out.println("\nJeff stands victorious.\n");
+                System.out.println(showers);
+
+            } else if (direction.equalsIgnoreCase("dining hall")) {
+                dialogue.cmbDialogue("CONSUMER", "CONSUUUUUUMMMMEEEEE", "Jesus Christ");
+                combat.enterCombat(Character.player, combat.enemies.get(3));
+                System.out.println("\nJeff stands victorious.\n");
+                System.out.println(dininghall);
+
+            } else if (direction.equalsIgnoreCase("kitchen")) {
+                dialogue.cmbDialogue("Le Chef", "Hon hon hon baguette eiffel tower *brandishes wine bottle*", "I gotta get out of here.");
+                combat.enterCombat(Character.player, combat.enemies.get(2));
+                System.out.println("\nJeff stands victorious.\n");
+                System.out.println(kitchen);
+
+            } else if (direction.equalsIgnoreCase("the bowlin arena")) {
+                dialogue.cmbDialogue("Mister Bowlin", "My name is Edgar Bowlin III. I'm 26 years old. My house is in Kingsport, where all the houses are, and I am not married. I work as an employee for the \nEast Tennessee State University, and I get home every day by 8 PM at the latest. I don't smoke, but I occasionally drink. I'm in bed by 11 PM, and make sure I get eight \nhours of sleep, no matter what. After having a glass of warm milk and doing about twenty minutes of stretches before going to bed, I usually have no problems sleeping \nuntil morning. Just like a baby, I wake up without any fatigue or stress in the morning. I was told there were no issues at my last check-up. I'm trying to explain that \nI'm a person who wishes to live a very quiet life. I take care not to trouble myself with any enemies, like winning and losing, that would cause me to lose sleep at night. \nThat is how I deal with society, and I know that is what brings me happiness. Although, if I were to fight I wouldn't lose to anyone.", "Yes.");
+                combat.enterCombat(Character.player, combat.enemies.get(5));
+                System.out.println("\nJeff stands victorious.\n");
+                System.out.println(bowlinarena);
+
+            } else if (direction.equalsIgnoreCase("gourd office")) {
+                dialogue.cmbDialogue("Gourd Officer", "Oi oi oi, yew hav a license for thaht??", "God save the queen");
+                combat.enterCombat(Character.player, combat.enemies.get(1));
+                System.out.println("\nJeff stands victorious.\n");
+                System.out.println(gourdoffice);
+
+            } else if (direction.equalsIgnoreCase("warden hall")) {
+                dialogue.cmbDialogue("The Warden, Hall", "I'm so tired. Let's get this over with.", "You were a good warden. The best.");
+                combat.enterCombat(Character.player, combat.enemies.get(4));
+                System.out.println("\nJeff stands victorious.\n");
+                System.out.println(wardenhall);
+
+            }
+
+            direction = scanner.nextLine();
+
+            dialogue.directionDialogue(direction);
         }
-        //dialogue.cmbDialogue("Prisoner #468", "Hey! You! Let me out!", "THIS DIALOGUE LINE IS TESTING");
 
         //System.out.println(cellkeycard.getDamage());
         //System.out.println(cellkeycard.getDescription());

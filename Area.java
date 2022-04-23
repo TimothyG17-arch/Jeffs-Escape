@@ -21,7 +21,7 @@ public class Area {
 
     @Override
     public String toString() {
-        return "You are currently in the " + ANSI_GREEN + name + ANSI_RESET + ", type an area name to go there: " + ANSI_YELLOW + areas + ANSI_RESET + "\n";
+        return "\nYou are currently in the " + ANSI_GREEN + name + ANSI_RESET + ", type an area name to go there: " + ANSI_YELLOW + areas + ANSI_RESET + "\n";
     }
 
     public String getName() {
