@@ -1,5 +1,5 @@
 public class NakedCowboys extends Enemies {
-    public NakedCowboys(int hp, int damage) {
+    public NakedCowboys() {
         super(110, 15);
         this.hp = 110;
         this.damage = 15;

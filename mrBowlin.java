@@ -1,7 +1,7 @@
 public class mrBowlin extends Enemies
 {
 
-    public mrBowlin(int hp, int damage) {
+    public mrBowlin() {
         super(500, 50);
         this.hp = 500;
         this.damage = 50;

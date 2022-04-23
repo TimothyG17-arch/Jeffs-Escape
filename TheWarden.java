@@ -1,6 +1,6 @@
 public class TheWarden extends Enemies
 {
-    public TheWarden(int hp, int damage) {
+    public TheWarden() {
         super(300, 30);
         this.hp = 300;
         this.damage = 30;

@@ -1,13 +1,28 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-
 public class Driver {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
+        Combat combat = new Combat();
         Locations locations = new Locations();
+        Character cha = new Character();
 
-        Item diningkeycard = new Item ("Dining Hall Keycard", "This lets you into the dining hall. Vegan options included.");
+        TheWarden ward = new TheWarden();
+        mrBowlin bowl = new mrBowlin();
+        Guards guard = new Guards();
+        Chefs chef = new Chefs();
+        Prisoner prison = new Prisoner();
+        NakedCowboys nakedCowboys = new NakedCowboys();
+
+        Item diningkeycard = new Item("Dining Hall Keycard", "This lets you into the dining hall. Vegan options included.");
+        combat.addEnemies(bowl);
+        combat.addEnemies(ward);
+        combat.addEnemies(guard);
+        combat.addEnemies(prison);
+        combat.addEnemies(chef);
+        combat.addEnemies(nakedCowboys);
+
 
         Weapon cellkeycard = new Weapon("Cell Keycard", "It's a little bit sharp. Not really though. Good luck.");
         cellkeycard.setDamage(5); //obtained as starting weapon
@@ -93,11 +108,11 @@ public class Driver {
         String direction = scanner.nextLine();
 
         dialogue.directionDialogue(direction);
-
-        while(true) {
-
+        boolean bool = true;
+        while (bool) {
             if (direction.equalsIgnoreCase("center block")) {
-                System.out.println(centerblock);
+                System.out.println("Center Block");
+                combat.enterCombat(Character.player, combat.enemies.get(3));
             } else if (direction.equalsIgnoreCase("north block")) {
                 System.out.println(northblock);
             } else if (direction.equalsIgnoreCase("south block")) {
@@ -118,13 +133,12 @@ public class Driver {
                 System.out.println(gourdoffice);
             } else if (direction.equalsIgnoreCase("warden hall")) {
                 System.out.println(wardenhall);
+                bool = false;
             }
-
             direction = scanner.nextLine();
-
             dialogue.directionDialogue(direction);
-        }
 
+        }
         //dialogue.cmbDialogue("Prisoner #468", "Hey! You! Let me out!", "THIS DIALOGUE LINE IS TESTING");
 
         //System.out.println(cellkeycard.getDamage());

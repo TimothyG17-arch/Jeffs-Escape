@@ -1,6 +1,6 @@
 public class Chefs extends Enemies
 {
-    public Chefs(int hp, int damage) {
+    public Chefs() {
         super(150, 20);
         this.hp = 150;
         this.damage = 20;
