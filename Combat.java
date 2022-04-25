@@ -55,6 +55,10 @@ public class Combat
                     }
                     System.out.println("\nHit for " + (hit - enemyHp));
                 }
+                else if(playerText.equalsIgnoreCase("Flee")) {
+                    System.out.println("He lives to die another day once again...");
+                    break;
+                }
                 else if(playerText.equalsIgnoreCase("instakill"))
                 {
                     instakill();
@@ -64,23 +68,22 @@ public class Combat
                 }
             } else
             {
-                attack();
+                int hit = enemyHp;
+                Roll dice = new Roll();
+                if (checkP == 0) {
+                    enemyHp = enemyHp - (dice.Dice(playDmg) + currentWeapon);
+                    checkP = 1;
+                } else {
+                    playerHp = playerHp - dice.Dice(enemyDmg);;
+                    checkP = 0;
+                }
             }
 
             looping = die();
         }
 
     }
-    private void attack() {
-        Roll dice = new Roll();
-        if (checkP == 0) {
-            enemyHp = enemyHp - dice.Dice(playDmg);
-            checkP = 1;
-        } else {
-            playerHp = playerHp - dice.Dice(enemyDmg);;
-            checkP = 0;
-        }
-    }
+
     public boolean die() {
         if (enemyHp <= 0) {
             checkP = 0;
