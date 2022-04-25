@@ -30,11 +30,12 @@ public class Combat
         playerText = "";
         checkP = 0;
     }
-    public void enterCombat(Character cha, Enemies mo) {
+    public void enterCombat(Character cha, Enemies mo, int currentWeapon) {
+        looping = false;
         playerHp = cha.getHp();
         enemyHp = mo.getHp();
         playDmg = cha.getDamage();
-        enemyDmg =mo.getDamage();
+        enemyDmg = mo.getDamage();
         while (!looping) {
             if (checkP == 0) {
                 System.out.println("\nPlayer's HP: " + playerHp + ". Opponent's HP: " + enemyHp + "\n");
@@ -44,7 +45,14 @@ public class Combat
                 if(playerText.equalsIgnoreCase("A"))
                 {
                     int hit = enemyHp;
-                    attack();
+                    Roll dice = new Roll();
+                    if (checkP == 0) {
+                        enemyHp = enemyHp - (dice.Dice(playDmg) + currentWeapon);
+                        checkP = 1;
+                    } else {
+                        playerHp = playerHp - dice.Dice(enemyDmg);;
+                        checkP = 0;
+                    }
                     System.out.println("\nHit for " + (hit - enemyHp));
                 }
                 else if(playerText.equalsIgnoreCase("instakill"))
@@ -72,14 +80,13 @@ public class Combat
             playerHp = playerHp - dice.Dice(enemyDmg);;
             checkP = 0;
         }
-
     }
     public boolean die() {
         if (enemyHp <= 0) {
             checkP = 0;
             return true;
         } else if (playerHp <= 0) {
-            System.out.println("\nDieded");
+            System.out.println("\nYou Dieded");
             System.exit(0);
         }
         return false;

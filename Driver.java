@@ -33,10 +33,8 @@ public class Driver {
         combat.addEnemies(warden);          // 4
         combat.addEnemies(bowlin);          // 5
 
-        Item diningkeycard = new Item ("Dining Hall Keycard", "This lets you into the dining hall. Vegan options included.");
-
         Weapon cellkeycard = new Weapon("Cell Keycard", "It's a little bit sharp. Not really though. Good luck.");
-        cellkeycard.setDamage(5); //obtained as starting weapon
+        cellkeycard.setDamage(500); //obtained as starting weapon
         Weapon spork = new Weapon("Spork", "Arguably worse than your fists in combat but now you can eat salad and still look civilized.");
         spork.setDamage(10); //obtained from winning a fight in any of the blocks
         Weapon shampoobottle = new Weapon("Shampoo Bottle", "Who filled this with hydrochloric acid? No idea but it's useful");
@@ -47,6 +45,9 @@ public class Driver {
         gun.setDamage(999); //obtained from winning a fight in the gourd office
         Weapon bowlinball = new Weapon("Bowlin Ball", "Hauntingly handsome, perhaps it resembles it's previous owner?");
         bowlinball.setDamage(500); //obtained before your fight with Mr. Bowlin
+
+        int currentWeapon = cellkeycard.getDamage();
+        System.out.println(cellkeycard.getDamage());
 
         Area centerblock = new Area("Center Block");
         centerblock.areas.add("North Block");
@@ -115,7 +116,6 @@ public class Driver {
 
         System.out.println(centerblock);
 
-
         String direction = scanner.nextLine();
 
         dialogue.directionDialogue(direction);
@@ -130,73 +130,68 @@ public class Driver {
             } else if (direction.equalsIgnoreCase("north block")) {
                 dialogue.cmbDialogue("Prisoner #468", "Hey! You! Let me out!", "No? Why lol? Sucks for you I guess.");
                 System.out.println("\n" + ANSI_RED + "Prisoner #468 " + ANSI_RESET + "becomes so angry he bends the cell bars with his mind and crawls out. Get ready.");
-                combat.enterCombat(Character.player, combat.enemies.get(0));
+                combat.enterCombat(Character.player, combat.enemies.get(0), currentWeapon);
                 System.out.println("\nJeff stands victorious.\n");
                 System.out.println(northblock);
 
             } else if (direction.equalsIgnoreCase("south block")) {
                 dialogue.cmbDialogue("Patrick Bateman", "Out of my way, I have to return some videotapes.", "I'll be taking those.");
-                combat.enterCombat(Character.player, combat.enemies.get(0));
+                combat.enterCombat(Character.player, combat.enemies.get(0), currentWeapon);
                 System.out.println("\nJeff stands victorious.\n");
                 System.out.println(southblock);
 
             } else if (direction.equalsIgnoreCase("west block")) {
                 dialogue.cmbDialogue("Ex", "Hey, I really miss you, I was thi-", "Seriously? How'd you get up here? Why? It's been seven year Melanie! Give me peace!");
-                combat.enterCombat(Character.player, combat.enemies.get(0));
+                combat.enterCombat(Character.player, combat.enemies.get(0), currentWeapon);
                 System.out.println("\nJeff stands victorious.\n");
                 System.out.println(westblock);
 
             } else if (direction.equalsIgnoreCase("east block")) {
                 dialogue.cmbDialogue("Space Crab", "*clickclick clackclick*", "I'm feeling a bit crabby today.");
-                combat.enterCombat(Character.player, combat.enemies.get(0));
+                combat.enterCombat(Character.player, combat.enemies.get(0), currentWeapon);
                 System.out.println("\nJeff stands victorious.\n");
                 System.out.println(eastblock);
 
             } else if (direction.equalsIgnoreCase("showers")) {
                 dialogue.cmbDialogue("Naked Cowboy", "Cowboys in the showers at Ram Ranch!", "Ram Ranch really rocks!");
-                combat.enterCombat(Character.player, combat.enemies.get(3));
+                combat.enterCombat(Character.player, combat.enemies.get(3), currentWeapon);
                 System.out.println("\nJeff stands victorious.\n");
                 System.out.println(showers);
 
             } else if (direction.equalsIgnoreCase("dining hall")) {
                 dialogue.cmbDialogue("CONSUMER", "CONSUUUUUUMMMMEEEEE", "Jesus Christ");
-                combat.enterCombat(Character.player, combat.enemies.get(3));
+                combat.enterCombat(Character.player, combat.enemies.get(3), currentWeapon);
                 System.out.println("\nJeff stands victorious.\n");
                 System.out.println(dininghall);
 
             } else if (direction.equalsIgnoreCase("kitchen")) {
                 dialogue.cmbDialogue("Le Chef", "Hon hon hon baguette eiffel tower *brandishes wine bottle*", "I gotta get out of here.");
-                combat.enterCombat(Character.player, combat.enemies.get(2));
+                combat.enterCombat(Character.player, combat.enemies.get(2), currentWeapon);
                 System.out.println("\nJeff stands victorious.\n");
                 System.out.println(kitchen);
 
             } else if (direction.equalsIgnoreCase("the bowlin arena")) {
                 dialogue.cmbDialogue("Mister Bowlin", "My name is Edgar Bowlin III. I'm 26 years old. My house is in Kingsport, where all the houses are, and I am not married. I work as an employee for the \nEast Tennessee State University, and I get home every day by 8 PM at the latest. I don't smoke, but I occasionally drink. I'm in bed by 11 PM, and make sure I get eight \nhours of sleep, no matter what. After having a glass of warm milk and doing about twenty minutes of stretches before going to bed, I usually have no problems sleeping \nuntil morning. Just like a baby, I wake up without any fatigue or stress in the morning. I was told there were no issues at my last check-up. I'm trying to explain that \nI'm a person who wishes to live a very quiet life. I take care not to trouble myself with any enemies, like winning and losing, that would cause me to lose sleep at night. \nThat is how I deal with society, and I know that is what brings me happiness. Although, if I were to fight I wouldn't lose to anyone.", "Yes.");
-                combat.enterCombat(Character.player, combat.enemies.get(5));
+                combat.enterCombat(Character.player, combat.enemies.get(5), currentWeapon);
                 System.out.println("\nJeff stands victorious.\n");
                 System.out.println(bowlinarena);
 
             } else if (direction.equalsIgnoreCase("gourd office")) {
                 dialogue.cmbDialogue("Gourd Officer", "Oi oi oi, yew hav a license for thaht??", "God save the queen");
-                combat.enterCombat(Character.player, combat.enemies.get(1));
+                combat.enterCombat(Character.player, combat.enemies.get(1), currentWeapon);
                 System.out.println("\nJeff stands victorious.\n");
                 System.out.println(gourdoffice);
 
             } else if (direction.equalsIgnoreCase("warden hall")) {
                 dialogue.cmbDialogue("The Warden, Hall", "I'm so tired. Let's get this over with.", "You were a good warden. The best.");
-                combat.enterCombat(Character.player, combat.enemies.get(4));
+                combat.enterCombat(Character.player, combat.enemies.get(4), currentWeapon);
                 System.out.println("\nJeff stands victorious.\n");
                 System.out.println(wardenhall);
-
             }
 
             direction = scanner.nextLine();
 
             dialogue.directionDialogue(direction);
         }
-
-        //System.out.println(cellkeycard.getDamage());
-        //System.out.println(cellkeycard.getDescription());
-
     }
 }
